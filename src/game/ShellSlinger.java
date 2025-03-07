@@ -31,18 +31,16 @@ class ShellSlinger extends Game {
     	
     	
     	// this is our cannon object shape 
-    	Point p1 = new Point(40,10);
-    	Point p2= new Point(40,40);
-		Point p3 = new Point(10,40);
+    	Point c1 = new Point(40,10);
+    	Point c2= new Point(40,40);
+		Point c3 = new Point(10,40);
 		
-		Point p4 = new Point(0,50);
-		Point p5 = new Point(0,0);
-		Point p6 = new Point(10, 10);
+		Point c4 = new Point(0,50);
+		Point c5 = new Point(0,0);
+		Point c6 = new Point(10, 10);
 		
 		
-	
-		
-		Point[] canonPoints = {p1,p2,p3,p4,p5,p6};
+		Point[] canonPoints = {c1,c2,c3,c4,c5,c6};
 		
 		
     	Canon startCanon = new Canon(canonPoints, new Point(10,550), 133);
@@ -54,6 +52,29 @@ class ShellSlinger extends Game {
     	brush.setColor(new Color(160,40,20));
     	
     	aimCanon.paint(brush);
+    	
+    	
+    	// these are the points for our bucket object
+    	
+    	Point b1 = new Point(0,0);
+    	Point b2 = new Point(5,5);
+    	Point b3 = new Point(40,10);
+    	Point b4 = new Point(40,40);
+    	Point b5 = new Point(5,45);
+    	Point b6 = new Point(0,50);
+    	
+    	Point[] bucketPoints = {b1,b2,b3,b4,b5,b6};
+    	
+    	Bucket bucket = new Bucket(bucketPoints, new Point(770,200), 0);
+    	Bucket bucket2 = new Bucket(bucketPoints, new Point(770,400), 0);
+    	brush.setColor(new Color(211, 175, 55));
+    	bucket.paint(brush);
+    	bucket2.paint(brush);
+    	
+    	
+    	
+    	
+    	
     	
     	
    
