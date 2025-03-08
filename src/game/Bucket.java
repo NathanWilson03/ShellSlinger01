@@ -2,8 +2,15 @@ package game;
 
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+
+import javax.swing.JPanel;
 
 public class Bucket extends Polygon{
+
+	
 	
 	// These objects will be controlled by the user and glide across the border 
 	// to collect the pieces that break off from  the explosion 
@@ -14,8 +21,45 @@ public class Bucket extends Polygon{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void move() {
+		
+		double amountToMove = 2;
+		
+		// if the position reaches the red canon
+		// then we set the y position below the red canon and to the left
+		// 715 is just outside left to the canon
+		
+		if(position.y == 500 && position.x > 500) {
+			position.y = 540; 
+			position.x  = 715;
+			
+		}
+		
+		// then we check if the y is 540 and if it is we start to move horizontal 
+		if(position.y == 540 ) {
+	
+		rotation = 90;
+		position.x -= amountToMove;
+	
+
+		}
+		// otherwise keep moving down
+		else if(position.y != 540 && position.x >= 715){
+			position.y += amountToMove;
+		}
+		
+	
+
+		
+		
+		
+		
+	}
+
+
 	
 	public void paint(Graphics brush) {
+		
 		
 		
 		Point[] pArray = super.getPoints();
@@ -28,8 +72,6 @@ public class Bucket extends Polygon{
 			
 			
 		}
-		
-		
 		
 		brush.fillPolygon(xPoints, yPoints, pArray.length);
 		
