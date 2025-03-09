@@ -25,13 +25,10 @@ public class Bucket extends Polygon{
 		
 		double amountToMove = 2;
 		
-		// if the position reaches the red canon
-		// then we set the y position below the red canon and to the left
-		// 715 is just outside left to the canon
-		
+		// checking if we reach the bottom of the right side 
 		if(position.y == 500 && position.x > 500) {
 			position.y = 540; 
-			position.x  = 715;
+			position.x  = 716;
 			
 		}
 		
@@ -44,9 +41,27 @@ public class Bucket extends Polygon{
 
 		}
 		// otherwise keep moving down
-		else if(position.y != 540 && position.x >= 715){
+		else if(position.y != 540 && position.x >= 770){
+			rotation = 360;
 			position.y += amountToMove;
 		}
+		
+		if(position.x == 60 && position.y == 540) {
+			position.y = 498;
+			position.x = 10;
+		}
+		
+		if(position.x == 10 && position.y <= 498) {
+			rotation = 180;
+			position.y -= amountToMove;
+		}
+		
+		if(position.x >= 10 && position.y == 10) {
+			rotation = 270;
+			position.x += amountToMove;
+			
+		}
+		
 		
 	
 
