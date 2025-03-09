@@ -2,6 +2,9 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 
 public class Canon extends Polygon {
 
@@ -14,13 +17,14 @@ public class Canon extends Polygon {
 	public Canon(Point[] inShape, Point inPosition, double inRotation, boolean canAim) {
 		super(inShape, inPosition, inRotation);
 		this.canAim = canAim;
+	
+		
+		
+		if(canAim) {
+			rotation = 60;
+		}
 	}
 
-	@Override
-	public void rotate(int degrees) {
-		if(canAim)
-		rotation = (rotation + degrees) % 90;
-	}
 
 	public void paint(Graphics brush) {
 
@@ -37,4 +41,13 @@ public class Canon extends Polygon {
 		brush.fillPolygon(xPoints, yPoints, pArray.length);
 
 	}
+	
+	public void move() {
+		
+
+	
+	}
+
+
+	
 }
