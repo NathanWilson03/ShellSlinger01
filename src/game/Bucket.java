@@ -20,7 +20,6 @@ public class Bucket extends Polygon implements KeyListener {
 
 	public Bucket(Point[] inShape, Point inPosition, double inRotation) {
 		super(inShape, inPosition, inRotation);
-		// TODO Auto-generated constructor stub
 
 		forward = false;
 		backward = false;
@@ -40,7 +39,6 @@ public class Bucket extends Polygon implements KeyListener {
 		if (backward && position.y != 536 && position.x == 770) {
 			position.y -= amountToMove;
 		}
-	
 
 		// if the red canon is hit by the bucket
 		if (forward && position.y == 500) {
@@ -48,7 +46,6 @@ public class Bucket extends Polygon implements KeyListener {
 			position.x = 712;
 			position.y = 536;
 		}
-		
 
 		if (position.y == 536 && forward) {
 			rotation = 90;
@@ -105,43 +102,32 @@ public class Bucket extends Polygon implements KeyListener {
 		if (forward && position.y == 12) {
 			position.x += amountToMove;
 		}
-		
-		if(backward && position.y == 12) {
-			position.x  -= amountToMove;
+
+		if (backward && position.y == 12) {
+			position.x -= amountToMove;
 		}
-		
-		// specifically top left side 
-		if(backward && position.y == 12 && position.x == 20) {
+
+		// specifically top left side
+		if (backward && position.y == 12 && position.x == 20) {
 			rotation = 180;
 		}
-		
-		// lastly top right 
-		if(forward && position.y == 12 && position.x == 760) {
+
+		// lastly top right
+		if (forward && position.y == 12 && position.x == 760) {
 			rotation = 360;
 			position.y = 16;
 			position.x = 770;
 		}
-		
-		if(forward && position.x == 760) {
+
+		if (forward && position.x == 760) {
 			position.y += amountToMove;
 		}
-		
-		if(backward && position.x == 770 && position.y == 16) {
+
+		if (backward && position.x == 770 && position.y == 16) {
 			rotation = 270;
-			position.y =12;
+			position.y = 12;
 			position.x = 764;
 		}
-		
-	
-		
-	
-		
-		
-		
-		
-		
-		
-		
 
 	}
 
@@ -166,16 +152,19 @@ public class Bucket extends Polygon implements KeyListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	// 68 and 65 are the constants associated with the key code
+	// to D and A 
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 
-		if (e.getKeyCode() == 68) {
+		if (e.getKeyCode() == 68 ) {
 			forward = true;
 
 		}
 
-		if (e.getKeyCode() == 65) {
+		if (e.getKeyCode() == 65 ) {
 			backward = true;
 		}
 
@@ -184,11 +173,11 @@ public class Bucket extends Polygon implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 
-		if (e.getKeyCode() == 68) {
+		if (e.getKeyCode() == 68 ) {
 			forward = false;
 		}
 
-		if (e.getKeyCode() == 65) {
+		if (e.getKeyCode() == 65 ) {
 			backward = false;
 		}
 

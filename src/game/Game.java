@@ -26,7 +26,6 @@ abstract class Game extends Canvas {
     frame.addWindowListener(new WindowAdapter() { 
       public void windowClosing(WindowEvent e) {System.exit(0);} 
     });
- 
     
     buffer = createImage(width, height);
     
