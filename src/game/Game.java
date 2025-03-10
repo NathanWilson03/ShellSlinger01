@@ -8,6 +8,8 @@ NOTE: You don't need to understand the details here, no fiddling neccessary.*/
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.JLabel;
+
 abstract class Game extends Canvas {
   protected boolean on = true;
   protected int width, height;
@@ -26,6 +28,9 @@ abstract class Game extends Canvas {
     frame.addWindowListener(new WindowAdapter() { 
       public void windowClosing(WindowEvent e) {System.exit(0);} 
     });
+    
+ 
+    
     
     buffer = createImage(width, height);
     

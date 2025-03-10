@@ -22,10 +22,14 @@ public class Shell extends Polygon{
 
     // Move the shell in its current direction
     public void move() {
-        if (!isBroken) {
+    	// condition so that it stops moving in this direct if the edge of screen is hit or broken
+        if (!isBroken && position.y > 8) {
+        	// 
             position.x += speed * Math.cos(Math.toRadians(rotation));
             position.y += speed * Math.sin(Math.toRadians(rotation));
         }
+        
+        
     }
 
     // Break the shell into pieces
@@ -34,7 +38,7 @@ public class Shell extends Polygon{
         int numPieces = 5; // Number of pieces to create
         for (int i = 0; i < numPieces; i++) {
             double pieceRotation = Math.random() * 360; // Random direction for each piece
-            ShellPiece piece = new ShellPiece(getShape(), new Point(position.x, position.y), pieceRotation);
+            ShellPiece piece = new ShellPiece(getShape(), new Point(position.x, position.y), pieceRotation, speed);
             pieces.add(piece);
         }
     }

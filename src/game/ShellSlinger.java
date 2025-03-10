@@ -12,29 +12,20 @@ import java.awt.event.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 class ShellSlinger extends Game{
 	static int counter = 0;
 	private Bucket bucket;
 	private Canon startCanon, aimCanon;
 	private Shell shell;
+	private Bullet bullet;
+	private ShellPiece shellPiece;
 
 	public ShellSlinger() {
 		super("ShellSlinger", 800, 600);
 		this.setFocusable(true);
 		this.requestFocus();
-		
-		/*
-		
-		JFrame frame = new JFrame("Menu");
-		frame.setSize(300,200);
-		frame.setVisible(true);
-		frame.repaint();
-		
-		*/
-	
-		
-		
 		
 
 		// BUCKET SHAPE
@@ -80,25 +71,45 @@ class ShellSlinger extends Game{
 		this.addMouseMotionListener(aimCanon);
 		
 		
-		Point s1 = new Point(0, 0);  // Tip of the shell
-		Point s2 = new Point(-5, -10); // Top-left curve
-		Point s3 = new Point(-15, -15); // Middle-left curve
-		Point s4 = new Point(-25, -10); // Bottom-left curve
-		Point s5 = new Point(-30, 0);  // Bottom tip
-		Point s6 = new Point(-25, 10); // Bottom-right curve
-		Point s7 = new Point(-15, 15); // Middle-right curve
-		Point s8 = new Point(-5, 10);  // Top-right curve
+		// SHELL SHAPE 
+		
+		Point s1 = new Point(0, 0);  
+		Point s2 = new Point(-5, -10); 
+		Point s3 = new Point(-15, -15); 
+		Point s4 = new Point(-25, -10); 
+		Point s5 = new Point(-30, 0);  
+		Point s6 = new Point(-25, 10); 
+		Point s7 = new Point(-15, 15); 
+		Point s8 = new Point(-5, 10);  
 	
 		
-		Point[] shellPoints = {s1, s2, s3,s4,s5,s6,s7,s8};
+		Point[] shellPoints = {s1,s2,s3,s4,s5,s6,s7,s8};
 		
+		// -45 is the rotation needed so that the cos() of the rotation 
+		// in radiant is at the angle of the canon
+		// see Shell move() method 
 		shell = new Shell(shellPoints, new Point(15, 550),-45,2 );
 		
 		
 		
-				
+		// BULLET SHAPE 
+		Point f1 = new Point(0,10);
+		Point f2 = new Point(10,15);
+		Point f3 = new Point(20,10);
+		Point f4 = new Point(30,5);
+		Point f5 = new Point(30,15);
+		Point f6 = new Point(20,10);
+		Point f7 = new Point(10,5);
 		
+		Point[] bulletPoints = {f1,f2,f3,f4,f5,f6,f7};
 		
+		bullet = new Bullet(bulletPoints, new Point(760, 550),aimCanon.rotation,4 );	
+		
+		this.addMouseMotionListener(bullet);
+		this.addMouseListener(bullet);
+		
+	
+	
 	}
 
 	public void paint(Graphics brush) {
@@ -109,43 +120,68 @@ class ShellSlinger extends Game{
 		// counter is incremented and this message printed
 		// each time the canvas is repainted
 
-		brush.setColor(new Color(34, 177, 76));
+		brush.setColor(new Color(0, 130, 0));
 		startCanon.paint(brush);
 
-		brush.setColor(new Color(160, 40, 20));
+		brush.setColor(new Color(212, 15, 55));
 
+		bullet.move();
+		bullet.paint(brush);
 
 
 		// no need for a move since
 		// addMouseListener with parameter aimCanon calls our update method, when the mouse is moved
+		
 		aimCanon.paint(brush);
 
 		// these are the points for our bucket object
 
 		// Bucket bucket2 = new Bucket(bucketPoints, new Point(770,400), 0);
 
-		brush.setColor(new Color(212, 175, 55));
+	
 
+		brush.setColor(new Color(30, 144, 255));
 		bucket.move();
-		
 		bucket.paint(brush);
 		
+		brush.setColor(new Color(34, 139, 34));
+
 		shell.move();
 		shell.paint(brush);
+	
 		
-
-	    
-
 	
 	}
 	
 
-
 	
 
 	public static void main(String[] args) {
+		
+		String[] options = {"Easy", "Medium", "Hard"};
+        // Show the custom option pane
+        int choice = JOptionPane.showOptionDialog(
+            null,
+            "Choose an Difficulty:",
+            "Custom Dialog",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            options,
+            options[0] // Default selection
+        );
+        
+        
+        
 		ShellSlinger a = new ShellSlinger();
 		a.repaint();
+		
+		
+
+	
+    
+    
+
 	
 	}
 

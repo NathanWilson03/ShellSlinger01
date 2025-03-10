@@ -1,23 +1,39 @@
 package game;
 
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
 
-import javax.swing.JPanel;
+/**
+* Bucket is a public class that extends Polygon
+* which holds fields for position, rotation and the shape.
+* Bucket also implements the KeyListener interface allowing us to move our 
+* bucket up, down, left and right along all four sides of the screen.
+* The point of the Bucket is to collect the shellPieces after 
+* the bullet makes contact with the shell.
+* The user will have to react quickly pressing the keys 
+* D and A to move the bucket to collect as many pieces as possible
+* It contains two necessary private boolean fields 
+* <ul>
+* <li>forward - to see if D key is being held down 
+* <li>backward - to see if A key is being held down
+*/
 
 public class Bucket extends Polygon implements KeyListener {
 
 	private boolean forward;
 	private boolean backward;
 
-	// These objects will be controlled by the user and glide across the border
-	// to collect the pieces that break off from the explosion
-	// I think there should be 2 but lmk
-
+	
+	
+	/**
+	 * Creates a Bucket object 
+	 * 
+	 * 
+	 * @param inShape
+	 * @param inPosition
+	 * @param inRotation
+	 */
 	public Bucket(Point[] inShape, Point inPosition, double inRotation) {
 		super(inShape, inPosition, inRotation);
 
