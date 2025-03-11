@@ -63,8 +63,6 @@ public class Canon extends Polygon implements MouseMotionListener, MouseListener
 
 	}
 
-	
-
 
 
 	@Override

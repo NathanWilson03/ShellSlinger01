@@ -144,12 +144,13 @@ class ShellSlinger extends Game{
 		bucket.move();
 		bucket.paint(brush);
 		
+		
+		
 		brush.setColor(new Color(34, 139, 34));
 
 		shell.move();
 		shell.paint(brush);
 	
-		
 	
 	}
 	
